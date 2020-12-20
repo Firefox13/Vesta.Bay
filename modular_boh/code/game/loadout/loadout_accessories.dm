@@ -114,27 +114,59 @@
 	allowed_roles = STERILE_ROLES
 
 /datum/gear/storage/brown_vest
-	allowed_roles = list(/datum/job/chief_engineer, /datum/job/senior_engineer, /datum/job/engineer, /datum/job/roboticist, /datum/job/qm, /datum/job/cargo_tech,
-						/datum/job/mining, /datum/job/janitor, /datum/job/scientist_assistant, /datum/job/merchant, /datum/job/nt_pilot, /datum/job/engineer_trainee, /datum/job/explorer, /datum/job/nt_pilot, /datum/job/pathfinder, /datum/job/submap/CTI_pilot, /datum/job/submap/CTI_engineer, /datum/job/submap/scavver_pilot, /datum/job/submap/scavver_doctor, /datum/job/submap/scavver_engineer)
+	display_name = "webbing, brown"
+	path = /obj/item/clothing/accessory/storage/brown_vest
+	cost = 3
 
 /datum/gear/storage/black_vest
-	allowed_roles = list(/datum/job/hos, /datum/job/warden, /datum/job/detective, /datum/job/officer, /datum/job/merchant)
+	display_name = "webbing, black"
+	path = /obj/item/clothing/accessory/storage/black_vest
+	cost = 3
 
 /datum/gear/storage/white_vest
-	allowed_roles = list(/datum/job/cmo, /datum/job/senior_doctor, /datum/job/junior_doctor, /datum/job/doctor, /datum/job/medical_trainee, /datum/job/chemist, /datum/job/merchant, /datum/job/medical_trainee)
+	display_name = "webbing, white"
+	path = /obj/item/clothing/accessory/storage/white_vest
+	cost = 3
 
 /datum/gear/storage/brown_drop_pouches
-	allowed_roles = list(/datum/job/chief_engineer, /datum/job/senior_engineer, /datum/job/engineer, /datum/job/roboticist, /datum/job/qm, /datum/job/cargo_tech,
-						/datum/job/mining, /datum/job/janitor, /datum/job/scientist_assistant, /datum/job/merchant, /datum/job/engineer_trainee, /datum/job/submap/CTI_pilot, /datum/job/submap/CTI_engineer, /datum/job/submap/scavver_pilot, /datum/job/submap/scavver_doctor, /datum/job/submap/scavver_engineer)
+	display_name = "drop pouches, brown"
+	path = /obj/item/clothing/accessory/storage/drop_pouches/brown
+	cost = 3
 
 /datum/gear/storage/black_drop_pouches
-	allowed_roles = list(/datum/job/hos, /datum/job/warden, /datum/job/detective, /datum/job/officer, /datum/job/merchant)
+	display_name = "drop pouches, black"
+	path = /obj/item/clothing/accessory/storage/drop_pouches/black
+	cost = 3
 
 /datum/gear/storage/white_drop_pouches
-	allowed_roles = list(/datum/job/cmo, /datum/job/senior_doctor, /datum/job/junior_doctor, /datum/job/doctor, /datum/job/medical_trainee, /datum/job/chemist, /datum/job/merchant, /datum/job/medical_trainee)
+	display_name = "drop pouches, white"
+	path = /obj/item/clothing/accessory/storage/drop_pouches/white
+	cost = 3
+
+/datum/gear/storage/webbing
+	display_name = "webbing, small"
+	path = /obj/item/clothing/accessory/storage/webbing
+	cost = 2
+
+/datum/gear/storage/webbing_large
+	display_name = "webbing, large"
+	path = /obj/item/clothing/accessory/storage/webbing_large
+	cost = 3
+
+/datum/gear/storage/bandolier
+	display_name = "bandolier"
+	path = /obj/item/clothing/accessory/storage/bandolier
+	cost = 3
+
+/datum/gear/storage/waistpack
+	display_name = "waist pack"
+	path = /obj/item/weapon/storage/belt/waistpack
+	slot = slot_belt
+	cost = 2
+	flags = GEAR_HAS_COLOR_SELECTION
 
 /datum/gear/tactical/holster
-	allowed_roles = ARMED_ROLES
+	cost = 2
 
 /datum/gear/tactical/holster/New()
 	..()
@@ -218,71 +250,47 @@
 /*********************
  tactical accessories
 *********************/
-/datum/gear/tactical/ubac
-	display_name = "black UBAC shirt"
-	path = /obj/item/clothing/accessory/ubac
-	allowed_roles = ARMORED_ROLES
-	allowed_branches = NT_BRANCHES
-
-/datum/gear/tactical/ubac/blue
-	display_name = "navy blue UBAC shirt"
-	path = /obj/item/clothing/accessory/ubac/blue
-	allowed_branches = NT_BRANCHES
 
 /datum/gear/tactical/ubac/misc
-	display_name = "miscellaneous UBAC shirt selection"
+	display_name = "UBAC shirt selection"
 	path = /obj/item/clothing/accessory/ubac
-	allowed_branches = CIVILIAN_BRANCHES
+	allowed_branches = TACTICOOL_BRANCHES
 
 /datum/gear/tactical/ubac/misc/New()
 	..()
 	var/shirts = list()
+	shirts["black UBAC shirt"] = /obj/item/clothing/accessory/ubac
+	shirts["navy UBAC shirt"] = /obj/item/clothing/accessory/ubac/navy
 	shirts["green UBAC shirt"] = /obj/item/clothing/accessory/ubac/green
 	shirts["tan UBAC shirt"] = /obj/item/clothing/accessory/ubac/tan
 	gear_tweaks += new/datum/gear_tweak/path(shirts)
 
-/datum/gear/tactical/armor_pouches
-	display_name = "black armor pouches"
-	path = /obj/item/clothing/accessory/storage/pouches
-	cost = 2
-	allowed_roles = ARMORED_ROLES
-
-/datum/gear/tactical/armor_pouches/navy
-	display_name = "navy armor pouches"
-	path = /obj/item/clothing/accessory/storage/pouches/navy
-	allowed_branches = NT_BRANCHES
-
 /datum/gear/tactical/armor_pouches/misc
-	display_name = "miscellaneous armor pouches selection"
+	display_name = "armor pouches selection"
 	path = /obj/item/clothing/accessory/storage/pouches
-	allowed_branches = CIVILIAN_BRANCHES
+	allowed_branches = TACTICOOL_BRANCHES
+	cost = 3
 
-/datum/gear/tactical/armor_pouches/misc/New()
+/datum/gear/tactical/large_pouches/New()
 	..()
 	var/pouches = list()
+	pouches["black armor pouches"] = /obj/item/clothing/accessory/storage/pouches
+	pouches["navy armor pouches"] = /obj/item/clothing/accessory/storage/pouches/navy
 	pouches["green armor pouches"] = /obj/item/clothing/accessory/storage/pouches/green
 	pouches["tan armor pouches"] = /obj/item/clothing/accessory/storage/pouches/tan
 	gear_tweaks += new/datum/gear_tweak/path(pouches)
 
 /datum/gear/tactical/large_pouches
-	display_name = "black large armor pouches"
+	display_name = "large pouches selection"
 	path = /obj/item/clothing/accessory/storage/pouches/large
 	cost = 5
-	allowed_roles = ARMORED_ROLES
+	allowed_roles = TACTICOOL_BRANCHES
 
-/datum/gear/tactical/large_pouches/navy
-	display_name = "navy large armor pouches"
-	path = /obj/item/clothing/accessory/storage/pouches/large/navy
-	allowed_branches = NT_BRANCHES
-
-/datum/gear/tactical/large_pouches/misc
-	display_name = "miscellaneous large armor pouches selection"
-	path = /obj/item/clothing/accessory/storage/pouches/large
-	allowed_branches = CIVILIAN_BRANCHES
-
-/datum/gear/tactical/large_pouches/misc/New()
+/datum/gear/tactical/large_pouches/New()
 	..()
 	var/pouches = list()
+	pouches["black large armor pouches"] = /obj/item/clothing/accessory/storage/pouches/large
+	pouches["navy large armor pouches"] = /obj/item/clothing/accessory/storage/pouches/large/navy
 	pouches["green large armor pouches"] = /obj/item/clothing/accessory/storage/pouches/large/green
 	pouches["tan large armor pouches"] = /obj/item/clothing/accessory/storage/pouches/large/tan
 	gear_tweaks += new/datum/gear_tweak/path(pouches)
